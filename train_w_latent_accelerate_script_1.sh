@@ -1,0 +1,41 @@
+CUDA_VISIBLE_DEVICES=2,3,4,5,6,7 python -m accelerate.commands.launch \
+--num_processes 6 \
+--num_machines 1 \
+--main_process_port 29509 \
+--mixed_precision=fp16 \
+src/lerobot/scripts/train_w_latent.py \
+--policy.type=act \
+--dataset.repo_id="lerobot/custom_dataset" \
+--dataset.root="/home/ubuntu/sjh/dataset/v1_latent" \
+--dataset.load_latent=true \
+--dataset.latent_root='latent' \
+--dataset.use_hz_parser=true \
+--dataset.sys1_hz=15 \
+--dataset.sys2_hz=5 \
+--steps=200000 \
+--save_freq=20000 \
+--log_freq=100 \
+--output_dir="outputs/train/dp_vla_act_panda_robot_v1_chunk100_use_vae_full" \
+--batch_size=128 \
+--policy.repo_id=false \
+--policy.vision_backbone="resnet50convfilm" \
+--policy.pretrained_backbone_weights="ResNet50_Weights.IMAGENET1K_V1" \
+--policy.pre_norm=false \
+--policy.dim_model=512 \
+--policy.n_heads=8 \
+--policy.dim_feedforward=3200 \
+--policy.feedforward_activation="relu" \
+--policy.n_encoder_layers=8 \
+--policy.n_decoder_layers=8 \
+--policy.use_vae=true \
+--policy.latent_dim=128 \
+--policy.n_vae_encoder_layers=4 \
+--policy.temporal_ensemble_coeff=null \
+--policy.dropout=0.1 \
+--policy.kl_weight=10.0 \
+--policy.optimizer_lr=1e-05 \
+--policy.optimizer_weight_decay=0.0001 \
+--policy.optimizer_lr_backbone=1e-05 \
+--policy.latent_mlp_hidden=null \
+--policy.clip_inst_feature=false \
+--policy.gradient_accumulation_steps=6

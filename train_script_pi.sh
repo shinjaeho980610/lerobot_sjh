@@ -1,0 +1,11 @@
+lerobot-train \
+    --policy.type=pi0 \
+    --dataset.repo_id=lerobot/custom_dataset \
+    --dataset.root=/home/ubuntu/sjh/dataset/v1 \
+    --steps=200000 \
+    --save_freq=20000 \
+    --output_dir=outputs/train/pi0_panda_robot_v1 \
+    --batch_size=32 \
+    --policy.repo_id=false \
+    --dataset.load_latent=false \
+    --log_freq 100

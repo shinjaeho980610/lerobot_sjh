@@ -1,0 +1,16 @@
+python src/lerobot/scripts/train_w_latent.py \
+--policy.type=dot \
+--dataset.repo_id="lerobot/custom_dataset" \
+--dataset.root="/mnt/d/lerobot_dataset/panda_robot_dataset_lerobot/v1_latent" \
+--dataset.load_latent=true \
+--dataset.latent_root='latent' \
+--dataset.use_hz_parser=true \
+--dataset.sys1_hz=15 \
+--dataset.sys2_hz=5 \
+--steps=200000 \
+--save_freq=20000 \
+--log_freq=10 \
+--output_dir="outputs/train/dot_test" \
+--batch_size=1 \
+--policy.repo_id=false \
+--policy.vision_backbone="resnet50convfilm" \
